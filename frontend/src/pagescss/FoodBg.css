@@ -1,0 +1,88 @@
+.foodbg-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 6rem;
+    min-height: 90vh;
+    gap: 2rem;
+  }
+  
+  .foodbg-content {
+    flex: 1;
+  }
+  
+  .foodbg-content h1 {
+    font-size: 3rem;
+    color: #333;
+    line-height: 1.2;
+  }
+  
+  .foodbg-content h1 span {
+    color: #555;
+    font-weight: 400;
+  }
+  
+  .foodbg-content h1 strong {
+    color: #ff3c00;
+    font-weight: 700;
+  }
+  
+  .foodbg-content p {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 500px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    max-width: 400px;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    outline: none;
+    font-size: 1rem;
+  }
+  
+  .search-bar button {
+    padding: 0.75rem 1.5rem;
+    background-color: #ff3c00;
+    color: white;
+    border: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .foodbg-image {
+    flex: 1;
+    text-align: center;
+    animation: zooming 3s linear infinite;
+  }
+  
+  .foodbg-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  @keyframes zooming {
+    0%{
+        scale: 1;
+    } 
+    50%{
+        scale: 1.1;
+    }
+    100%{
+        scale: 1;
+    }
+  }
