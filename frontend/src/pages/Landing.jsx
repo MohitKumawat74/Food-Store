@@ -63,10 +63,9 @@ const Landing = () => {
       toast.success(`${food.fName} is added to cart successfully 👍`);
     }
   };
-
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 mt-15">
-      {/* Background Section */}
+      {/* Background Section for non-logged-in users only */}
       {!userData && (
         <div className="relative w-full h-[85vh] overflow-hidden flex items-center justify-center">
           <video
