@@ -108,11 +108,10 @@ const Cart = () => {
 
           <button
             onClick={handleCheckout}
-            className={`w-full mt-6 px-6 py-3 rounded-md text-lg transition ${
-              cart.length === 0 || loading
+            className={`w-full mt-6 px-6 py-3 rounded-md text-lg transition ${cart.length === 0 || loading
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
                 : "bg-black text-white hover:bg-gray-900"
-            }`}
+              }`}
             disabled={cart.length === 0 || loading}
           >
             {loading ? 'Processing...' : 'Proceed to Checkout'}
