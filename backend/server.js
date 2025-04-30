@@ -11,9 +11,10 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5000'],
+  origin: ['https://your-frontend.vercel.app'],
   credentials: true,
 }));
+
 app.use(express.json());
 app.use('/api', Allroutes);
 app.use('/upload', express.static('public/upload'));
