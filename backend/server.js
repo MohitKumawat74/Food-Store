@@ -11,9 +11,10 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Middleware
 app.use(cors({
-  origin: ['https://your-frontend.vercel.app'],
+  origin: ['https://food-store-frontend-w6a6.onrender.com', 'http://localhost:3000'], 
   credentials: true,
 }));
+
 
 app.use(express.json());
 app.use('/api', Allroutes);

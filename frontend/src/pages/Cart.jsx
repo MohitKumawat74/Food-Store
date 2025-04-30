@@ -20,7 +20,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/create-checkout-session', {
+      const res = await fetch('https://food-store-backend-jm6i.onrender.com/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -61,7 +61,7 @@ const Cart = () => {
                 className="flex flex-col sm:flex-row items-center bg-white shadow-md rounded-xl p-4 sm:p-6 border border-gray-200"
               >
                 <img
-                  src={`http://localhost:5000/upload/${item.fImage}`}
+                  src={`https://food-store-backend-jm6i.onrender.com/upload/${item.fImage}`}
                   alt={item.fName}
                   className="w-full sm:w-32 h-32 object-cover rounded-lg mb-4 sm:mb-0"
                 />

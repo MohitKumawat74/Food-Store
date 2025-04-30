@@ -159,7 +159,7 @@ const Landing = () => {
               >
                 <div className="relative w-full h-48 overflow-hidden">
                   <img
-                    src={`http://localhost:5000/upload/${food.fImage}`}
+                    src={`https://food-store-backend-jm6i.onrender.com/upload/${food.fImage}`}
                     alt={food.fName}
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
                   />

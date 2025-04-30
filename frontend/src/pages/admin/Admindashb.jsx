@@ -69,7 +69,7 @@ const Admindashb = () => {
               >
                 <td className="p-4 border">
                   <img
-                    src={`http://localhost:5000/upload/${product.fImage}`}
+                    src={`https://food-store-backend-jm6i.onrender.com/upload/${product.fImage}`}
                     alt={product.fName}
                     className="w-24 h-16 mx-auto rounded-md shadow-md"
                   />
