@@ -1,7 +1,7 @@
 const Registration = require("../models/Registration");
 const Message = require('../models/Message');
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // ✅ User Registration Controller
 exports.regpage = async (req, res) => {
