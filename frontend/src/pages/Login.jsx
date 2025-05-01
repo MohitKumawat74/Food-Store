@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import "react-toastify/dist/ReactToastify.css";
 
 import loginImage from "../assets/login.jpg"; // Put the image inside src/assets/
+import { log } from "console";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -28,15 +29,17 @@ const Login = () => {
       const response = await axios.post("/api/login", formData, {
         headers: { "Content-Type": "application/json" },
       });
-  
+  console.log(response)
       if (response.status === 200) {
-        let user = response.data.apiData;
+
+        let user = response.data?.apiData;
   
         if (typeof user === "string") {
           user = { role: user };
+          console.log(user)
         }
   
-        if (!user.role) {
+        if (!user?.role) {
           console.error("Invalid API response:", response.data);
           toast.error("Something went wrong. Please try again.", { position: "top-center" });
           return;
