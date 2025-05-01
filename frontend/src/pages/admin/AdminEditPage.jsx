@@ -23,7 +23,7 @@ const AdminEditPage = () => {
       .get(`/api/edit/${id}`)
       .then(({ data }) => {
         setProduct(data.data);
-        setPreview(`https://food-store-backend-jm6i.onrender.com/upload/${data.data.fImage}`);
+        setPreview(`${process.env.Base_url}/upload/${data.data.fImage}`);
       })
       .catch(() => toast.error("Error fetching product"));
   }, [id]);

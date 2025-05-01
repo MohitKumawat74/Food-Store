@@ -33,7 +33,7 @@ const AdminInsert = () => {
     formData.append("image", newProduct.image);
 
     try {
-      const response = await axios.post("/api/admininsert", formData, {
+      const response = await axios.post(`${process.env.Base_url}/api/admininsert`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

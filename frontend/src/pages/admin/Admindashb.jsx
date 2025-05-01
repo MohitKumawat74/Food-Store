@@ -9,7 +9,7 @@ const Admindashb = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/showdata");
+        const response = await axios.get(`${process.env.Base_url}/api/showdata`);
         setProducts(response.data.apiData);
       } catch (error) {
         console.error("Error fetching data:", error);

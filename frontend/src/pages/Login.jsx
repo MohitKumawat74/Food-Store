@@ -26,7 +26,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/login", formData, {
+      const response = await axios.post(`${process.env.Base_url}/api/login`, formData, {
         headers: { "Content-Type": "application/json" },
       });
   console.log(response)

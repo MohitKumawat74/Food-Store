@@ -20,7 +20,7 @@ const Landing = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/landing");
+        const response = await axios.get(`${process.env.Base_url}/api/landing`);
         setFoodItems(response.data.apiData);
         setFilteredItems(response.data.apiData);
       } catch (error) {
