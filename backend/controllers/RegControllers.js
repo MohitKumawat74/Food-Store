@@ -1,9 +1,8 @@
 const Registration = require("../models/Registration");
 const Message = require('../models/Message');
-
 const bcrypt = require("bcryptjs");
 
-// ✅ User Registration Controller
+// ✅ User Registration
 exports.regpage = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -25,7 +24,6 @@ exports.regpage = async (req, res) => {
     });
 
     await newUser.save();
-
     return res.status(201).json({ message: "Registration successful" });
 
   } catch (err) {
@@ -34,12 +32,12 @@ exports.regpage = async (req, res) => {
   }
 };
 
+// ✅ Login Handler
 exports.loginpage = async (req, res) => {
   const { usernameOrEmail, password } = req.body;
-  console.log(req.body)
 
   try {
-    // ✅ 1. Admin Login
+    // 1. Admin Login (optional: bcrypt.compare if hashed)
     if (
       usernameOrEmail === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
@@ -50,59 +48,53 @@ exports.loginpage = async (req, res) => {
       });
     }
 
-    // ✅ 2. Find user
+    // 2. Find user
     const record = await Registration.findOne({
       $or: [{ regName: usernameOrEmail }, { regEmail: usernameOrEmail }],
     });
 
-    console.log(record);
-    
-
     if (!record) {
-      // 🛑 If user not found, send common message
-      return res.status(400).json({ message: "Something went wrong. Please check your credentials." });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    // ✅ 3. Compare password
+    // 3. Compare password
     const isPasswordCorrect = await bcrypt.compare(password, record.regPassword);
 
     if (!isPasswordCorrect) {
-      // 🛑 If wrong password, same common message
-      return res.status(400).json({ message: "Something went wrong. Please check your credentials." });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    // ✅ 4. Success
+    // 4. Success
     return res.status(200).json({
       apiData: {
         role: "user",
         username: record.regName,
         email: record.regEmail,
       },
-      message: "Successfully logged in",
+      message: "Login successful",
     });
 
   } catch (err) {
     console.error("Login Error:", err);
-    return res.status(500).json({ message: "Server error", error: err.message });
+    return res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
-
-// Handle Message Submission
+// ✅ Contact Message Handler
 exports.message = async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
   try {
-      const { name, email, message } = req.body;
+    const newMessage = new Message({ name, email, message });
+    await newMessage.save();
 
-      if (!name || !email || !message) {
-          return res.status(400).json({ error: "All fields are required." });
-      }
-
-      const newMessage = new Message({ name, email, message });
-      await newMessage.save();
-
-      res.status(201).json({ message: "Message saved successfully!" });
+    return res.status(201).json({ message: "Message saved successfully!" });
   } catch (error) {
-      console.error("Error saving message:", error);
-      res.status(500).json({ error: "Server error. Please try again later." });
+    console.error("Message Error:", error);
+    return res.status(500).json({ error: "Server error. Please try again later." });
   }
 };
