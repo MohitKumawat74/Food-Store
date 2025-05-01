@@ -36,6 +36,7 @@ exports.regpage = async (req, res) => {
 
 exports.loginpage = async (req, res) => {
   const { usernameOrEmail, password } = req.body;
+  console.log(req.body)
 
   try {
     // ✅ 1. Admin Login
@@ -53,6 +54,9 @@ exports.loginpage = async (req, res) => {
     const record = await Registration.findOne({
       $or: [{ regName: usernameOrEmail }, { regEmail: usernameOrEmail }],
     });
+
+    console.log(record);
+    
 
     if (!record) {
       // 🛑 If user not found, send common message
