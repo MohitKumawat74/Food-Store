@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../pagescss/Landing.css";
 import toast from "react-hot-toast";
 import FoodBg from "./FoodBg";
+import { log } from "console";
 
 const Landing = () => {
   const { addToCart, userData } = useAuth();
@@ -21,8 +22,10 @@ const Landing = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${process.env.Base_url}/api/landing`);
-        setFoodItems(response.data.apiData);
-        setFilteredItems(response.data.apiData);
+        console.log(response);
+        
+        setFoodItems(response.data?.apiData);
+        setFilteredItems(response.data?.apiData);
       } catch (error) {
         setError("Failed to fetch food items");
       }
