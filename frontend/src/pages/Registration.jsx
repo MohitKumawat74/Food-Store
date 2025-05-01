@@ -27,7 +27,7 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await axios.post(`${process.env.Base_url}/api/register`, formData);
+      let response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/register`, formData);
       navigate('/login');
       setFormData({ username: "", email: "", password: "" });
       toast.success(response.data.message);
