@@ -7,7 +7,6 @@ import { useAuth } from "../context/AuthContext";
 import "react-toastify/dist/ReactToastify.css";
 
 import loginImage from "../assets/login.jpg"; // Put the image inside src/assets/
-import { log } from "console";
 
 const Login = () => {
   const [formData, setFormData] = useState({
