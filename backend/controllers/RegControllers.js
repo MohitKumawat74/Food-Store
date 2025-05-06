@@ -66,12 +66,13 @@ exports.loginpage = async (req, res) => {
 
     // 4. Success
     return res.status(200).json({
+      message: "Login successful",
       apiData: {
         role: "user",
         username: record.regName,
         email: record.regEmail,
       },
-      message: "Login successful",
+      
     });
 
   } catch (err) {
